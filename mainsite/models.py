@@ -16,3 +16,24 @@ class Post(models.Model):
 
     def __unicode__(self):
         return self.title
+
+class Product(models.Model):
+    sku = models.CharField(max_length=10)
+    price = models.PositiveIntegerField(default=0)
+    name = models.CharField(max_length=50)
+    SIZES = (('S', 'Small'), ('M', 'Middle'), ('L', 'Large'),)
+    size = models.CharField(max_length=1,choices=SIZES)
+
+    def __unicode__(self):
+        return self.name+"_"+self.sku
+
+class Family(models.Model):
+    name = models.CharField(max_length=20)
+    nano_name = models.CharField(max_length=10,default=None)
+    age = models.PositiveIntegerField()
+    GEN = (('男','Male' ), ('女','Female' ),)
+
+    gender = models.CharField(max_length=2, choices=GEN)
+
+    def __unicode__(self):
+        return self.name

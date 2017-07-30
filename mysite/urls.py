@@ -18,8 +18,13 @@ from django.contrib import admin
 
 from mainsite.views import homepage
 from mainsite.views import showpost
+from mainsite.views import showfamily
+from mainsite.views import showallfamily
+
 urlpatterns = [
     url(r'^$', homepage),
     url(r'^post/(\w+)$',showpost),
     url(r'^admin/', admin.site.urls),
+    url(r'^family/(\w+)$',showfamily),
+    url(r'^family$',showallfamily)
 ]

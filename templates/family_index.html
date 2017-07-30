@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>
+        欢迎光临丁旭东的博客
+    </title>
+</head>
+<body>
+    <h1>欢迎光临丁旭东的博客</h1>
+    <hr>
+    {% for f in family %}
+        <p style='font-family:微软雅黑;font-size:14pt;font-weight:bold;'>
+         <a href="/family/{{ f.nano_name }}">{{ f.name }}</a>
+        </p>
+    {% endfor %}
+    <hr>
+    {% if now %}
+        <h3>现在时间是：{{ now }}</h3>
+    {%  else %}
+        <h3>We are 伐木累</h3>
+    {% endif %}
+</body>
+</html>

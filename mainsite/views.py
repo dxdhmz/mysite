@@ -2,7 +2,8 @@
 from __future__ import unicode_literals
 from django.shortcuts import render
 from models import Post
-from django.http import HttpResponse
+from models import Family
+from django.http import HttpResponse,Http404
 from django.template.loader import get_template
 from django.shortcuts import redirect
 
@@ -28,3 +29,19 @@ def showpost(request, slug):
             return HttpResponse(html)
     except:
         return redirect('/')
+
+def showallfamily(request):
+    template=get_template('family_index.html')
+    family=Family.objects.all()
+    #now = datetime.now()
+    html=template.render(locals())
+    return HttpResponse(html)
+
+def showfamily(request,nona):
+    template = get_template('family_post.html')
+    try:
+        family = Family.objects.get(nano_name=nona)
+    except:
+        raise Http404("没有这么一个人啦~~")
+    html = template.render(locals())
+    return HttpResponse(html)
